@@ -15,9 +15,9 @@ def main():
     # --------------------------------------------------------------
 
     run_test_simple_t()
-    # run_test_set_colors()
-    # run_test_move_by()
-    # run_test_clone()
+    run_test_set_colors()
+    run_test_move_by()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -233,13 +233,22 @@ class CapitalT(object):
           :type dy: int
         """
         # --------------------------------------------------------------
-        # TODO: 6.
+        # Done: 6.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     move_by.pdf. Note: the pdf shows the different locations
         #     that the T moves through, but there is only 1 T at any moment.
         # --------------------------------------------------------------
+        self.h_rect.corner_1.x = self.h_rect.corner_1.x + dx
+        self.h_rect.corner_2.x = self.h_rect.corner_2.x + dx
+        self.v_rect.corner_1.x = self.v_rect.corner_1.x + dx
+        self.v_rect.corner_2.x = self.v_rect.corner_2.x + dx
+
+        self.h_rect.corner_1.y = self.h_rect.corner_1.y + dy
+        self.h_rect.corner_2.y = self.h_rect.corner_2.y + dy
+        self.v_rect.corner_1.y = self.v_rect.corner_1.y + dy
+        self.v_rect.corner_2.y = self.v_rect.corner_2.y + dy
 
     def clone(self):
         """
@@ -261,13 +270,17 @@ class CapitalT(object):
           :rtype: CapitalT
         """
         # --------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
         #     clone.pdf.
         # --------------------------------------------------------------
 
+        clone = CapitalT(self.h_rect.get_center(), self.h_rect.get_width(),
+                  self.v_rect.get_height(),self.v_rect.get_width())
+        clone.set_colors(self.h_rect.fill_color, self.h_rect.outline_color)
+        return clone
 
 # ----------------------------------------------------------------------
 # If this module is running at the top level (as opposed to being
